@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxChat - Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="Main.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">LuxChat</div>
+        <nav class="nav-links">
+            <a href="login.html">Login</a>
+            <a href="sign.html">Sign Up</a>
+            <div class="profile-icon" id="profileIcon">
+                <i data-feather="user"></i> </div>
+        </nav>
+
+        <aside class="side-panel" id="sidePanel">
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Account Settings</a></li>
+                <li><a href="#">Friends</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <main class="main-content">
+        <h1>Welcome to LuxChat</h1>
+        <p>Meet new people, chat freely and connect randomly in a luxurious interface. No boundaries, just conversations.</p>
+        <!-- <button class="start-chatting-btn"> Start Chatting</button> -->
+         <button class="start-chatting-btn" onclick="window.location.href='chatting.html'"  > Start Chatting</button>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace(); // Initializes Feather icons
+
+        const profileIcon = document.getElementById('profileIcon');
+        const sidePanel = document.getElementById('sidePanel');
+
+        profileIcon.addEventListener('click', () => {
+            sidePanel.classList.toggle('open');
+        });
+
+        // Close side panel if clicked outside
+        document.addEventListener('click', (event) => {
+            if (!sidePanel.contains(event.target) && !profileIcon.contains(event.target)) {
+                sidePanel.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
