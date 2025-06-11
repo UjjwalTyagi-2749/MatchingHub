@@ -24,7 +24,8 @@ body {
 
 /* Header Styles */
 .header {
-    background-color: var(--header-bg-dark);
+    /* background-color: var(--header-bg-dark); */
+    background-color:#322354;
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
