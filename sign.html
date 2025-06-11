@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - LuxChat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-bg: #1A1A2E; /* Deep dark background */
+            --dark-gradient-start: #1A1A2E;
+            --dark-gradient-end: #0F0F1B; /* Slightly darker end for subtle gradient */
+            --card-bg: #2C2C40; /* Darker card background than text inputs */
+            --text-color-light: #E0E0E0; /* Light gray for general text */
+            --text-color-dark: #FFFFFF; /* White for main titles */
+            --input-bg: #3F3F50; /* Slightly lighter than card for inputs */
+            --input-border: #5A5A6B; /* Subtle border for inputs */
+            --input-placeholder: #B0B0B0; /* Light gray for placeholder text */
+            --button-primary: #7C6D9C; /* Purple button color (similar to previous LuxChat) */
+            --button-primary-hover: #9182B1; /* Lighter purple on hover */
+            --button-secondary-bg: #FFFFFF; /* White background for Google button */
+            --button-secondary-text: #1A1A2E; /* Dark text for Google button */
+            --button-secondary-border: #D1D1D1;
+            --link-color: #7C6D9C; /* Purple for links */
+            --or-line: #5A5A6B; /* Color for the OR separator line */
+            --luxchat-logo-color: #6A5B8A; /* LuxChat logo color */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, var(--dark-gradient-start), var(--dark-gradient-end));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color-light);
+            position: relative; /* For LuxChat logo positioning */
+            overflow: hidden; /* Hide any overflow, especially on mobile */
+        }
+
+        .signup-container {
+            background-color: var(--card-bg);
+            padding: 30px 30px; /* Adjusted from 40px to 30px top/bottom padding */
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); 
+            width: 100%;
+            max-width: 350px; 
+            text-align: center;
+            position: relative; 
+            z-index: 2; 
+            animation: fadeIn 0.8s ease-out; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signup-container h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color-dark);
+            margin-bottom: 20px; /* Adjusted from 30px to 20px */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-color-light);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: calc(100% - 24px); 
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-color-light);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: var(--input-placeholder);
+            opacity: 0.8;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--button-primary);
+            box-shadow: 0 0 0 3px rgba(124, 109, 156, 0.3);
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--button-primary);
+            color: var(--text-color-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 10px; 
+        }
+
+        .signup-button:hover {
+            background-color: var(--button-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .or-separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0; /* Adjusted from 25px to 20px */
+            color: var(--input-placeholder);
+            font-size: 0.9rem;
+        }
+
+        .or-separator::before,
+        .or-separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--or-line);
+        }
+
+        .or-separator:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .or-separator:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        .google-signup-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--button-secondary-bg);
+            color: var(--button-secondary-text);
+            font-weight: 500;
+            font-size: 1.1rem;
+            border: 1px solid var(--button-secondary-border);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .google-signup-button:hover {
+            background-color: #F0F0F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .google-signup-button .google-icon {
+            width: 20px;
+            height: 20px;
+            /* Placeholder for Google icon. In a real project, you'd use an SVG or image */
+            /* You can get an SVG from Google's Material Design Icons or a similar library */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234285F4" d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453-3.454 0-6.26-2.812-6.26-6.26C7.305 7.301 10.11 4.49 13.564 4.49c1.782 0 3.395.698 4.394 1.76l2.124-2.124c-1.543-1.405-3.666-2.26-6.518-2.26-5.509 0-9.982 4.472-9.982 9.982s4.473 9.982 9.982 9.982c5.097 0 8.829-3.985 8.829-9.761 0-.718-.08-1.393-.188-2.046z"/><path fill="%2334A853" d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453-3.454 0-6.26-2.812-6.26-6.26C7.305 7.301 10.11 4.49 13.564 4.49c1.782 0 3.395.698 4.394 1.76l2.124-2.124c-1.543-1.405-3.666-2.26-6.518-2.26-5.509 0-9.982 4.472-9.982 9.982s4.473 9.982 9.982 9.982c5.097 0 8.829-3.985 8.829-9.761 0-.718-.08-1.393-.188-2.046z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .login-link {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: var(--text-color-light);
+        }
+
+        .login-link a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+            color: var(--button-primary-hover);
+        }
+
+        /* LuxChat Logo at bottom right */
+        .luxchat-branding {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--luxchat-logo-color);
+            opacity: 0.8;
+            z-index: 1; 
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 25px 20px; /* Further reduced padding for very small screens */
+                margin: 15px; 
+                border-radius: 15px;
+            }
+
+            .signup-container h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .form-group input,
+            .signup-button,
+            .google-signup-button {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            .luxchat-branding {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+
+        <div class="or-separator">OR</div>
+
+        <button class="google-signup-button">
+            <span class="google-icon"></span>
+            Sign up with Google
+        </button>
+
+        <p class="login-link">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+    </div>
+
+    <div class="luxchat-branding">
+        MatchingHub
+    </div>
+</body>
+</html>

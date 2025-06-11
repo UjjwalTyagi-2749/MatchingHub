@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Stranger - LuxChat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="chatting.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2 class="chat-title">Connected with Stranger</h2>
+            <div class="chat-actions">
+                <button class="button secondary-button">
+                    <i data-feather="refresh-cw"></i> <span>Next Chat</span>
+                </button>
+                <button class="button close-button">
+                    <i data-feather="x"></i> <span>Close</span>
+                </button>
+            </div>
+        </div>
+        <div class="chat-body">
+            </div>
+        <div class="chat-footer">
+            <div class="input-group">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button class="button primary-button send-button">
+                    <i data-feather="send"></i> </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace(); // Initialize Feather Icons
+    </script>
+</body>
+</html>
