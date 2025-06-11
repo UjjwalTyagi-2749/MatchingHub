@@ -1,0 +1,31 @@
+{
+  "name": "matchinghub",
+  "version": "1.0.0",
+  "description": "Website to talk to strangers and be yourselve",
+  "main": "Backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UjjwalTyagi-2749/MatchingHub.git"
+  },
+  "keywords": [
+    "Stranger!",
+    "User"
+  ],
+  "author": "Ujjwal TYagi Mudit Aggrwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UjjwalTyagi-2749/MatchingHub/issues"
+  },
+  "homepage": "https://github.com/UjjwalTyagi-2749/MatchingHub#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
