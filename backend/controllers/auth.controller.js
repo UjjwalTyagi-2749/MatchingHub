@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import { generateToken } from "../lib/utils.js";
 
 
 export const signup = async (req, res) => {
@@ -18,8 +19,9 @@ export const signup = async (req, res) => {
       return res.status(409).json({ message: 'Email already registered' });
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Hash password using Salt
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create user
     const newUser = new User({
@@ -28,9 +30,26 @@ export const signup = async (req, res) => {
       password: hashedPassword,
     });
 
-    await newUser.save();
+    if(newUser) {
+        //generate jwt token
+        generateToken(newUser._id, res);
+        //save data to database
+        await newUser.save();
 
-    res.status(201).json({ message: 'User registered successfully' });
+        res.status(201).json({
+          message: 'User registered successfully',
+          user: {
+            _id: newUser._id,
+            username: newUser.username,
+            email: newUser.email
+          }
+        });
+ 
+    } else {
+        res.status(400).json({ message: 'Invalid User data' });
+    }
+
+   
   } catch (err) {
     console.error('Register error:', err);
     res.status(500).json({ message: 'Internal server error' });
