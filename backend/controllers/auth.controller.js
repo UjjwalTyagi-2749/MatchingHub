@@ -104,3 +104,60 @@ export const logout = (req, res) => {
     // Logic for user logout
     res.send('User logged out successfully');
 }
+
+// Function to get username and user ID using email
+export const getUserByEmail = async (req, res) => {
+  try {
+    const { email } = req.body; // or req.params.email if you're using URL parameters
+
+    // Validate email
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    // Find user by email (excluding password for security)
+    const user = await User.findOne({ email }).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({
+      message: 'User found successfully',
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email
+      }
+    });
+
+  } catch (err) {
+    console.error('Get user error:', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+// Alternative: Helper function for internal use (not an API endpoint)
+export const fetchUserDataByEmail = async (email) => {
+  try {
+    if (!email) {
+      throw new Error('Email is required');
+    }
+
+    const user = await User.findOne({ email }).select('-password');
+    
+    if (!user) {
+      return null; // Return null if user not found
+    }
+
+    return {
+      id: user._id,
+      username: user.username,
+      email: user.email
+    };
+
+  } catch (err) {
+    console.error('Fetch user data error:', err);
+    throw err; // Re-throw error for calling function to handle
+  }
+};
