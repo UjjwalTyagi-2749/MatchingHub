@@ -10,6 +10,8 @@
     
     <link rel="stylesheet" href="Login.css">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="login.js"></script> <!-- This is your JS logic -->
 <body>
     <div class="auth-container">
         <header class="auth-header">
@@ -25,7 +27,7 @@
             <div class="form-card">
                 <h2>Welcome Back!</h2>
                 <p>Login to continue your luxurious chat experience.</p>
-                <form class="auth-form" action="#" method="POST">
+                <form class="auth-form" method="POST" id="loginForm" >
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" placeholder="Enter your email" required>
